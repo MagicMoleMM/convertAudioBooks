@@ -1,24 +1,24 @@
 from moviepy.editor import *
 
-audioclip_0 = AudioFileClip("71.mp3")
-audioclip_1 = AudioFileClip("72.mp3")
-audioclip_2 = AudioFileClip("73.mp3")
-audioclip_3 = AudioFileClip("74.mp3")
-audioclip_4 = AudioFileClip("75.mp3")
-audioclip_5 = AudioFileClip("76.mp3")
+audioclip_0 = AudioFileClip("nevesta-temnogo-drakona-fakultet-spasenija-16-.mp3")
+# audioclip_1 = AudioFileClip("72.mp3")
+# audioclip_2 = AudioFileClip("73.mp3")
+# audioclip_3 = AudioFileClip("74.mp3")
+# audioclip_4 = AudioFileClip("75.mp3")
+# audioclip_5 = AudioFileClip("76.mp3")
 
 audioclip = concatenate_audioclips([
                             audioclip_0,
-                            audioclip_1,
-                            audioclip_2,
-                            audioclip_3,
-                            audioclip_4,
-                            audioclip_5,
+                        #     audioclip_1,
+                        #     audioclip_2,
+                        #     audioclip_3,
+                        #     audioclip_4,
+                        #     audioclip_5,
                                     ])
 
 print("duration moviepy: " + str(audioclip.duration))
 
-videoclip = ImageClip("big.jpg").set_duration(str(audioclip.duration))
+videoclip = ImageClip("cover13d__w820.jpg").set_duration(str(audioclip.duration))
 
 videoclip2 = videoclip.set_audio(audioclip)
 
@@ -31,4 +31,4 @@ videoclip2 = videoclip.set_audio(audioclip)
 #                                      # videoclip_3
 #                                      ])
 
-videoclip2.write_videofile("Елена Звездная. Я твой монстр(2). Часть last.mp4", fps=30)
+videoclip2.write_videofile("Драконьи Авиалинии(2). Невеста темного дракона. Факультет спасения Часть last.mp4", fps=30)

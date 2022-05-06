@@ -17,6 +17,12 @@ urls = ["https://rutube.ru/channel/25868408/videos/",
         "https://rutube.ru/channel/25868408/videos/page-7/",
         "https://rutube.ru/channel/25868408/videos/page-8/",
         "https://rutube.ru/channel/25868408/videos/page-9/",
+        "https://rutube.ru/channel/25868408/videos/page-10/",
+        "https://rutube.ru/channel/25868408/videos/page-11/",
+        "https://rutube.ru/channel/25868408/videos/page-12/",
+        "https://rutube.ru/channel/25868408/videos/page-13/",
+        "https://rutube.ru/channel/25868408/videos/page-14/",
+        
         ]
 
 links = []
@@ -34,10 +40,12 @@ print(len(links))
 # driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 driver = webdriver.Safari()
 driver.set_window_size(1024, 600)
-driver.maximize_window()
+# driver.maximize_window()
 
 for link in links:
+
     link = random.choice(links)
+
     try:
         driver.get(link)
         time.sleep(30)
@@ -45,8 +53,10 @@ for link in links:
         time.sleep(random.randint(40, 70))
         print(link)
         print(i)
+
     except:
         pass
+
     i = i + 1
 
 driver.quit()
