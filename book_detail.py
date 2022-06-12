@@ -68,4 +68,4 @@ books = pd.DataFrame({
 
 
 
-books.to_excel("/Users/MagicMole/PycharmProjects/FB_request/love_fantasy.xlsx")
+books.to_csv("/Users/MagicMole/PycharmProjects/FB_request/love_fantasy.csv")
