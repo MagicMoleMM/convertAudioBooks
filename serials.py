@@ -17,7 +17,7 @@ pages_link = [name["href"] for name in pages_content.select('a')][0]
 pages_num = [page.get_text() for page in pages_content.select('a')][-1]
 
 
-for i in range(1, 5): # int(page_num)
+for i in range(1, 3): # int(page_num)
     url_page_link = 'https://zetseriali.online/serial/page/' + str(i)
     page = requests.get(url_page_link)
     links_url =  links_url + [name["href"] for name in content.select(".short-title")]
