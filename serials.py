@@ -21,7 +21,7 @@ pages_link = [name["href"] for name in pages_content.select('a')][0]
 pages_num = [page.get_text() for page in pages_content.select('a')][-1]
 
 
-for i in range(1, 5): # int(page_num)
+for i in range(1, 5): # int(pages_num)
     url_page_link = f'https://allserial.org/page/{i}'
     page_i = requests.get(url_page_link)
     soup_i = bs(page_i.content, 'html.parser')
@@ -46,6 +46,7 @@ item_text = []
 item_video_link = []
 item_video_trailer = []
 item_img = []
+item_img1 = []
 
 
 for url in links_url:
@@ -58,16 +59,16 @@ for url in links_url:
    
     item_title_eng = item_title_eng + [page.get_text() for page in item_content.select(".short-header div")]
     item_year = item_year + [[page.get_text() for page in item_content.select('.short-list li [href*="year"]')]]
-    item_country = item_country + [[page.get_text() for page in item_content.select('.short-list li [href*="strana"]')]]
-    item_translate = item_translate + [[page.get_text() for page in item_content.select('.short-list li [href*="postproduction"]')]]
-    item_producer = item_producer + [[page.get_text() for page in item_content.select('.short-list li [href*="director"]')]]
+    item_country = item_country + [[page.get_text(', ') for page in item_content.select('.short-list li [href*="strana"]')]]
+    item_translate = item_translate + [[page.get_text(', ') for page in item_content.select('.short-list li [href*="postproduction"]')]]
+    item_producer = item_producer + [[page.get_text(', ') for page in item_content.select('.short-list li [href*="director"]')]]
     
     try:
         [page.get_text() for page in item_content.select('.short-list li [href*="janre"]')]
     except IndexError:
         item_genre = item_genre + []
     else:
-        item_genre = item_genre + [[page.get_text() for page in item_content.select('.short-list li [href*="janre"]')]]
+        item_genre = item_genre + [[page.get_text(', ') for page in item_content.select('.short-list li [href*="janre"]')]]
     
     # try:
     #     [[page.get_text() for page in item_content.select(".short-list li")][4]]
@@ -81,12 +82,13 @@ for url in links_url:
     except IndexError:
         item_actors = item_actors + ['-']
     else:
-        item_actors = item_actors + [[page.get_text() for page in item_content.select('.short-list li [href*="rolax"]')]]
+        item_actors = item_actors + [[page.get_text(', ') for page in item_content.select('.short-list li [href*="rolax"]')]]
 
 
     item_text = item_text + [[page.get_text() for page in item_content.select(".ftext p")][0]]
     item_video_link = item_video_link + [[name["src"] for name in item_content.select('.fplayer iframe')][0]]
     # item_video_trailer = item_video_trailer + [[name["src"] for name in item_content.select('.fplayer iframe')][1]]
+    item_img1 = item_img1 + [name["src"] for name in item_content.select('.fimg img')]
     item_img = item_img + [name["src"].split('/')[-1] for name in item_content.select('.fimg img')]
     
 
@@ -105,6 +107,7 @@ for url in links_url:
 # print(item_video_link)
 # print(item_video_trailer)
 # print(item_img)
+# print(item_img1)
 # print(item_rating_imdb)
 # print(item_rating_kp)
 # print(len(item_title))
@@ -121,14 +124,15 @@ for url in links_url:
 # print(len(item_video_link))
 # print(len(item_video_trailer))
 # print(len(item_img))
+# print(len(item_img1))
 # print(len(item_rating_kp))
 # print(len(item_rating_imdb))
 
-for url in item_img:
-    m = requests.get(f'https://allserial.org/{url}')
-    n = url.split('/')[-1]
-    with open(f'img/{n}', 'wb') as f:
-        f.write(m.content)
+# for url in item_img1:
+#     m = requests.get(f'https://allserial.org/{url}')
+#     n = url.split('/')[-1]
+#     with open(f'img/{n}', 'wb') as f:
+#         f.write(m.content)
 
 serials = pd.DataFrame({
     "item_title": item_title,
