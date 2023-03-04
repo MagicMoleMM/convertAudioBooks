@@ -1,0 +1,495 @@
+{
+    "code": 200,
+    "message": "Success",
+    "totalCount": 20,
+    "pageSize": 10,
+    "totalPage": 2,
+    "currPage": 1,
+    "data": [
+        {
+            "id": 738971,
+            "uid": 401167696,
+            "userName": "KRIPTOBANKER",
+            "merchantLevel": 2,
+            "merchantTags": [],
+            "coinId": 3,
+            "currency": 11,
+            "tradeType": 0,
+            "blockType": 1,
+            "payMethod": "21,9,25",
+            "payMethods": [
+                {
+                    "payMethodId": 21,
+                    "name": "Cash Deposit",
+                    "color": null,
+                    "isRecommend": null
+                },
+                {
+                    "payMethodId": 9,
+                    "name": "QIWI",
+                    "color": "#FF8C00",
+                    "isRecommend": null
+                },
+                {
+                    "payMethodId": 25,
+                    "name": "Alfa-bank",
+                    "color": "#EE3424",
+                    "isRecommend": null
+                }
+            ],
+            "payTerm": 20,
+            "payName": "[{\"bankType\":9,\"id\":14933026},{\"bankType\":21,\"id\":14909562},{\"bankName\":\"Альфа-банк\",\"bankType\":25,\"id\":14596950}]",
+            "minTradeLimit": "10000.00",
+            "maxTradeLimit": "1000000.00",
+            "price": "119994.96",
+            "tradeCount": "1000.000000",
+            "isOnline": true,
+            "isFollowed": false,
+            "tradeMonthTimes": 101,
+            "orderCompleteRate": "87",
+            "takerAcceptOrder": 0,
+            "takerAcceptAmount": "0",
+            "takerLimit": 0,
+            "gmtSort": 1677935608000,
+            "isCopyBlock": false,
+            "thumbUp": 0,
+            "seaViewRoom": null
+        },
+        {
+            "id": 808894,
+            "uid": 403152325,
+            "userName": "yesabirov",
+            "merchantLevel": 0,
+            "merchantTags": null,
+            "coinId": 3,
+            "currency": 11,
+            "tradeType": 0,
+            "blockType": 1,
+            "payMethod": "9,28,36",
+            "payMethods": [
+                {
+                    "payMethodId": 9,
+                    "name": "QIWI",
+                    "color": "#FF8C00",
+                    "isRecommend": null
+                },
+                {
+                    "payMethodId": 28,
+                    "name": "Tinkoff",
+                    "color": "#DAB700",
+                    "isRecommend": null
+                },
+                {
+                    "payMethodId": 36,
+                    "name": "Raiffeisenbank",
+                    "color": "#D89F00",
+                    "isRecommend": null
+                }
+            ],
+            "payTerm": 15,
+            "payName": "[{\"bankType\":9,\"id\":14828651},{\"bankName\":\"Тинькофф\",\"bankType\":28,\"id\":14698517},{\"bankName\":\"Райффайзенбанк\",\"bankType\":36,\"id\":14691708}]",
+            "minTradeLimit": "10000.00",
+            "maxTradeLimit": "60000.00",
+            "price": "118068.14",
+            "tradeCount": "1.000000",
+            "isOnline": true,
+            "isFollowed": false,
+            "tradeMonthTimes": 0,
+            "orderCompleteRate": "0",
+            "takerAcceptOrder": 0,
+            "takerAcceptAmount": "0",
+            "takerLimit": 0,
+            "gmtSort": 1672907544000,
+            "isCopyBlock": false,
+            "thumbUp": 0,
+            "seaViewRoom": null
+        },
+        {
+            "id": 780702,
+            "uid": 399764211,
+            "userName": "KentzMadMan",
+            "merchantLevel": 0,
+            "merchantTags": null,
+            "coinId": 3,
+            "currency": 11,
+            "tradeType": 0,
+            "blockType": 1,
+            "payMethod": "9,28,29",
+            "payMethods": [
+                {
+                    "payMethodId": 9,
+                    "name": "QIWI",
+                    "color": "#FF8C00",
+                    "isRecommend": null
+                },
+                {
+                    "payMethodId": 28,
+                    "name": "Tinkoff",
+                    "color": "#DAB700",
+                    "isRecommend": null
+                },
+                {
+                    "payMethodId": 29,
+                    "name": "Sberbank",
+                    "color": "#319B41",
+                    "isRecommend": null
+                }
+            ],
+            "payTerm": 180,
+            "payName": "[{\"bankType\":9,\"id\":14756211},{\"bankName\":\"тинькофф\",\"bankType\":28,\"id\":14756210},{\"bankName\":\"HBENC(peBvwfyQEVl8GOJa85Njs5PBNlzSyzCd)\",\"bankType\":29,\"id\":14785573}]",
+            "minTradeLimit": "3000.00",
+            "maxTradeLimit": "120000.00",
+            "price": "116436.84",
+            "tradeCount": "1000.000000",
+            "isOnline": true,
+            "isFollowed": false,
+            "tradeMonthTimes": 5,
+            "orderCompleteRate": "62",
+            "takerAcceptOrder": 0,
+            "takerAcceptAmount": "0",
+            "takerLimit": 0,
+            "gmtSort": 1673081001000,
+            "isCopyBlock": false,
+            "thumbUp": 0,
+            "seaViewRoom": null
+        },
+        {
+            "id": 506194,
+            "uid": 155813135,
+            "userName": "Phoenix 7",
+            "merchantLevel": 0,
+            "merchantTags": null,
+            "coinId": 3,
+            "currency": 11,
+            "tradeType": 0,
+            "blockType": 1,
+            "payMethod": "9,28,29",
+            "payMethods": [
+                {
+                    "payMethodId": 9,
+                    "name": "QIWI",
+                    "color": "#FF8C00",
+                    "isRecommend": null
+                },
+                {
+                    "payMethodId": 28,
+                    "name": "Tinkoff",
+                    "color": "#DAB700",
+                    "isRecommend": null
+                },
+                {
+                    "payMethodId": 29,
+                    "name": "Sberbank",
+                    "color": "#319B41",
+                    "isRecommend": null
+                }
+            ],
+            "payTerm": 30,
+            "payName": "[{\"bankName\":\"\",\"bankType\":9,\"id\":14019414},{\"bankName\":\"Tinkoff\",\"bankType\":28,\"id\":6830174},{\"bankName\":\"Сбербанк\",\"bankType\":29,\"id\":7221598}]",
+            "minTradeLimit": "3000.00",
+            "maxTradeLimit": "60000.00",
+            "price": "115845.79",
+            "tradeCount": "9.973549",
+            "isOnline": true,
+            "isFollowed": false,
+            "tradeMonthTimes": 5,
+            "orderCompleteRate": "83",
+            "takerAcceptOrder": 0,
+            "takerAcceptAmount": "0",
+            "takerLimit": 0,
+            "gmtSort": 1674993381000,
+            "isCopyBlock": false,
+            "thumbUp": 0,
+            "seaViewRoom": null
+        },
+        {
+            "id": 692277,
+            "uid": 398517277,
+            "userName": "Нeisenberg",
+            "merchantLevel": 0,
+            "merchantTags": null,
+            "coinId": 3,
+            "currency": 11,
+            "tradeType": 0,
+            "blockType": 1,
+            "payMethod": "9,69,358",
+            "payMethods": [
+                {
+                    "payMethodId": 9,
+                    "name": "QIWI",
+                    "color": "#FF8C00",
+                    "isRecommend": null
+                },
+                {
+                    "payMethodId": 69,
+                    "name": "SBP - Fast Bank Transfer",
+                    "color": "#1487C9",
+                    "isRecommend": null
+                },
+                {
+                    "payMethodId": 358,
+                    "name": "Rosbank",
+                    "color": "#EE293D",
+                    "isRecommend": null
+                }
+            ],
+            "payTerm": 30,
+            "payName": "[{\"bankType\":9,\"id\":14366653},{\"bankType\":69,\"id\":14366558},{\"bankName\":\"Росбанк\",\"bankType\":358,\"id\":14364544}]",
+            "minTradeLimit": "1000.00",
+            "maxTradeLimit": "28961.00",
+            "price": "115845.79",
+            "tradeCount": "0.250000",
+            "isOnline": true,
+            "isFollowed": false,
+            "tradeMonthTimes": 0,
+            "orderCompleteRate": "0",
+            "takerAcceptOrder": 0,
+            "takerAcceptAmount": "0",
+            "takerLimit": 0,
+            "gmtSort": 1677678810000,
+            "isCopyBlock": false,
+            "thumbUp": 0,
+            "seaViewRoom": null
+        },
+        {
+            "id": 614776,
+            "uid": 200763970,
+            "userName": "DONALID_TRUMP",
+            "merchantLevel": 0,
+            "merchantTags": null,
+            "coinId": 3,
+            "currency": 11,
+            "tradeType": 0,
+            "blockType": 1,
+            "payMethod": "19,69,9",
+            "payMethods": [
+                {
+                    "payMethodId": 19,
+                    "name": "Yandex",
+                    "color": "#D89F00",
+                    "isRecommend": null
+                },
+                {
+                    "payMethodId": 69,
+                    "name": "SBP - Fast Bank Transfer",
+                    "color": "#1487C9",
+                    "isRecommend": null
+                },
+                {
+                    "payMethodId": 9,
+                    "name": "QIWI",
+                    "color": "#FF8C00",
+                    "isRecommend": null
+                }
+            ],
+            "payTerm": 60,
+            "payName": "[{\"bankType\":9,\"id\":14505668},{\"bankType\":19,\"id\":14755453},{\"bankType\":69,\"id\":14148222}]",
+            "minTradeLimit": "3000.00",
+            "maxTradeLimit": "500000.00",
+            "price": "114072.64",
+            "tradeCount": "1000.000000",
+            "isOnline": true,
+            "isFollowed": false,
+            "tradeMonthTimes": 2,
+            "orderCompleteRate": "100",
+            "takerAcceptOrder": 0,
+            "takerAcceptAmount": "0",
+            "takerLimit": 0,
+            "gmtSort": 1674294189000,
+            "isCopyBlock": false,
+            "thumbUp": 0,
+            "seaViewRoom": null
+        },
+        {
+            "id": 736637,
+            "uid": 383567931,
+            "userName": "CryptoPioneer",
+            "merchantLevel": 0,
+            "merchantTags": null,
+            "coinId": 3,
+            "currency": 11,
+            "tradeType": 0,
+            "blockType": 1,
+            "payMethod": "69,9",
+            "payMethods": [
+                {
+                    "payMethodId": 69,
+                    "name": "SBP - Fast Bank Transfer",
+                    "color": "#1487C9",
+                    "isRecommend": null
+                },
+                {
+                    "payMethodId": 9,
+                    "name": "QIWI",
+                    "color": "#FF8C00",
+                    "isRecommend": null
+                }
+            ],
+            "payTerm": 60,
+            "payName": "[{\"bankType\":9,\"id\":14443032},{\"bankType\":69,\"id\":14443038}]",
+            "minTradeLimit": "500.00",
+            "maxTradeLimit": "35000.00",
+            "price": "113339.74",
+            "tradeCount": "10.000000",
+            "isOnline": true,
+            "isFollowed": false,
+            "tradeMonthTimes": 2,
+            "orderCompleteRate": "100",
+            "takerAcceptOrder": 0,
+            "takerAcceptAmount": "0",
+            "takerLimit": 0,
+            "gmtSort": 1672739903000,
+            "isCopyBlock": false,
+            "thumbUp": 0,
+            "seaViewRoom": null
+        },
+        {
+            "id": 698660,
+            "uid": 388418838,
+            "userName": "Онлайн",
+            "merchantLevel": 0,
+            "merchantTags": null,
+            "coinId": 3,
+            "currency": 11,
+            "tradeType": 0,
+            "blockType": 1,
+            "payMethod": "9,27,69",
+            "payMethods": [
+                {
+                    "payMethodId": 9,
+                    "name": "QIWI",
+                    "color": "#FF8C00",
+                    "isRecommend": null
+                },
+                {
+                    "payMethodId": 27,
+                    "name": "VTB BANK",
+                    "color": "#0A2973",
+                    "isRecommend": null
+                },
+                {
+                    "payMethodId": 69,
+                    "name": "SBP - Fast Bank Transfer",
+                    "color": "#1487C9",
+                    "isRecommend": null
+                }
+            ],
+            "payTerm": 30,
+            "payName": "[{\"bankType\":9,\"id\":14386969},{\"bankName\":\"ВТБ\",\"bankType\":27,\"id\":14386951},{\"bankType\":69,\"id\":14386962}]",
+            "minTradeLimit": "1000.00",
+            "maxTradeLimit": "50000.00",
+            "price": "112429.52",
+            "tradeCount": "4.979656",
+            "isOnline": true,
+            "isFollowed": false,
+            "tradeMonthTimes": 0,
+            "orderCompleteRate": "0",
+            "takerAcceptOrder": 0,
+            "takerAcceptAmount": "0",
+            "takerLimit": 0,
+            "gmtSort": 1673176020000,
+            "isCopyBlock": false,
+            "thumbUp": 0,
+            "seaViewRoom": null
+        },
+        {
+            "id": 492635,
+            "uid": 144081005,
+            "userName": "Kapitalist",
+            "merchantLevel": 0,
+            "merchantTags": null,
+            "coinId": 3,
+            "currency": 11,
+            "tradeType": 0,
+            "blockType": 1,
+            "payMethod": "9,25,29",
+            "payMethods": [
+                {
+                    "payMethodId": 9,
+                    "name": "QIWI",
+                    "color": "#FF8C00",
+                    "isRecommend": null
+                },
+                {
+                    "payMethodId": 25,
+                    "name": "Alfa-bank",
+                    "color": "#EE3424",
+                    "isRecommend": null
+                },
+                {
+                    "payMethodId": 29,
+                    "name": "Sberbank",
+                    "color": "#319B41",
+                    "isRecommend": null
+                }
+            ],
+            "payTerm": 90,
+            "payName": "[{\"bankName\":\"\",\"bankType\":9,\"id\":12245437},{\"bankName\":\"Альфа-Банк\",\"bankType\":25,\"id\":14199594},{\"bankName\":\"Сбербанк\",\"bankType\":29,\"id\":12245421}]",
+            "minTradeLimit": "3000.00",
+            "maxTradeLimit": "1430052.00",
+            "price": "111649.33",
+            "tradeCount": "100.000000",
+            "isOnline": true,
+            "isFollowed": false,
+            "tradeMonthTimes": 2,
+            "orderCompleteRate": "100",
+            "takerAcceptOrder": 0,
+            "takerAcceptAmount": "0",
+            "takerLimit": 0,
+            "gmtSort": 1649221284000,
+            "isCopyBlock": false,
+            "thumbUp": 0,
+            "seaViewRoom": null
+        },
+        {
+            "id": 759961,
+            "uid": 404035774,
+            "userName": "Alcap1984",
+            "merchantLevel": 0,
+            "merchantTags": null,
+            "coinId": 3,
+            "currency": 11,
+            "tradeType": 0,
+            "blockType": 1,
+            "payMethod": "69,9,29",
+            "payMethods": [
+                {
+                    "payMethodId": 69,
+                    "name": "SBP - Fast Bank Transfer",
+                    "color": "#1487C9",
+                    "isRecommend": null
+                },
+                {
+                    "payMethodId": 9,
+                    "name": "QIWI",
+                    "color": "#FF8C00",
+                    "isRecommend": null
+                },
+                {
+                    "payMethodId": 29,
+                    "name": "Sberbank",
+                    "color": "#319B41",
+                    "isRecommend": null
+                }
+            ],
+            "payTerm": 20,
+            "payName": "[{\"bankType\":9,\"id\":14903429},{\"bankName\":\"Сбербанк\",\"bankType\":29,\"id\":14448383},{\"bankName\":\"\",\"bankType\":69,\"id\":14996201}]",
+            "minTradeLimit": "500.00",
+            "maxTradeLimit": "25000.00",
+            "price": "109935.29",
+            "tradeCount": "1.974842",
+            "isOnline": true,
+            "isFollowed": false,
+            "tradeMonthTimes": 24,
+            "orderCompleteRate": "85",
+            "takerAcceptOrder": 0,
+            "takerAcceptAmount": "0",
+            "takerLimit": 0,
+            "gmtSort": 1677504643000,
+            "isCopyBlock": false,
+            "thumbUp": 0,
+            "seaViewRoom": null
+        }
+    ],
+    "success": true
+}
