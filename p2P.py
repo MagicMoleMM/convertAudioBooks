@@ -1,7 +1,6 @@
 import json
 import time
 import requests
-import requests
 import pandas as pd
 import numpy as np
 from json import JSONDecoder
@@ -255,16 +254,16 @@ def job():
             'percent_bybit',
         }
 
-    for column in columns:
-        row = dt_pd.index[dt_pd[column] == dt_pd[['percent_binance','percent_huobi','percent_bybit']].max().max()].tolist()
-        if row != []:
-            column_ = column.replace('percent_', '')
-            active = dt_pd['assetUnit'][row].values[0]
-            pay_method = dt_pd['trademethod'][row].values[0]
-            text = f'Лучшая продажа - {active}, платежный метод - {pay_method}, биржа - {column_},  {status}.\nProfit {profit} / Deposit {deposit}'
-            
+        for column in columns:
+            row = dt_pd.index[dt_pd[column] == dt_pd[['percent_binance','percent_huobi','percent_bybit']].max().max()].tolist()
+            if row != []:
+                column_ = column.replace('percent_', '')
+                active = dt_pd['assetUnit'][row].values[0]
+                pay_method = dt_pd['trademethod'][row].values[0]
+                text = f'Лучшая продажа - {active}, платежный метод - {pay_method}, биржа - {column_},  {status}.\nProfit {profit} / Deposit {deposit}'
+                
 
-        if status_0 > 0.2:
+        if status_0 > 2.0:
             telegram_bot_sendtext(text)
             time.sleep(5)
 
