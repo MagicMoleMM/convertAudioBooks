@@ -246,6 +246,8 @@ def job():
         
         status_0 = dt_pd[['percent_binance','percent_huobi','percent_bybit']].max().max()
         status = f"максимальный процент  = {np.round(status_0,decimals=2)}%"
+
+        profit = np.round(deposit * status_0 / 100, decimals=2)
         
         columns = {
             'percent_binance',
@@ -259,7 +261,7 @@ def job():
             column_ = column.replace('percent_', '')
             active = dt_pd['assetUnit'][row].values[0]
             pay_method = dt_pd['trademethod'][row].values[0]
-            text = f'Лучшая продажа - {active}, платежный метод - {pay_method}, биржа - {column_},  {status}'
+            text = f'Лучшая продажа - {active}, платежный метод - {pay_method}, биржа - {column_},  {status}.\nProfit {profit} / Deposit {deposit}'
             
 
         if status_0 > 0.2:
