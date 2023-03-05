@@ -259,7 +259,7 @@ def job():
             column_ = column.replace('percent_', '')
             active = dt_pd['assetUnit'][row].values[0]
             pay_method = dt_pd['trademethod'][row].values[0]
-            text = f'Лучшая покупка - {active}, платежный метод - {pay_method}, биржа - {column_},  {status}'
+            text = f'Лучшая продажа - {active}, платежный метод - {pay_method}, биржа - {column_},  {status}'
             
 
         if status_0 > 0.2:
