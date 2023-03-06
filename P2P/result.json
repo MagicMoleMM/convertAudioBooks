@@ -1,0 +1,10 @@
+{
+    "code": 200,
+    "message": "Success",
+    "totalCount": 0,
+    "pageSize": 10,
+    "totalPage": 0,
+    "currPage": 1,
+    "data": [],
+    "success": true
+}

@@ -141,7 +141,10 @@ def job():
                     results_huobi = results_huobi + [None]
                 else:
                     if ([result['data'][0]["tradeMonthTimes"]][0] == 0 or [result['data'][0]["payTerm"]][0] > 15):
-                        results_huobi = results_huobi + [result['data'][1]["price"]]
+                        if ([result['data'][1]["tradeMonthTimes"]][0] == 0 or [result['data'][1]["payTerm"]][0] > 15):
+                            results_huobi = results_huobi + [result['data'][2]["price"]]
+                        else:
+                            results_huobi = results_huobi + [result['data'][1]["price"]]
                     else:
                         results_huobi = results_huobi + [result['data'][0]["price"]]
 
@@ -199,9 +202,15 @@ def job():
             try:
                 [dt_pexpay["data"][0]["adDetailResp"]["price"]]
             except:
-                results_pexpay = results_pexpay + None
+                results_pexpay = results_pexpay + [None]
             else:
-                results_pexpay = results_pexpay + [dt_pexpay["data"][0]["adDetailResp"]["price"]]
+                if ([dt_pexpay["data"][0]["advertiserVo"]["userStatsRet"]["completedOrderNum"]][0] < 10.0 or [dt_pexpay["data"][0]["advertiserVo"]["userStatsRet"]["finishRate"]][0] < 0.60):
+                    if ([dt_pexpay["data"][1]["advertiserVo"]["userStatsRet"]["completedOrderNum"]][0] < 10.0 or [dt_pexpay["data"][1]["advertiserVo"]["userStatsRet"]["finishRate"]][0] < 0.60):
+                        results_pexpay = results_pexpay + [dt_pexpay["data"][2]["adDetailResp"]["price"]]
+                    else:
+                        results_pexpay = results_pexpay + [dt_pexpay["data"][1]["adDetailResp"]["price"]]
+                else:
+                    results_pexpay = results_pexpay + [dt_pexpay["data"][0]["adDetailResp"]["price"]]
 
 
         if paytype == 'TinkoffNew':
@@ -234,7 +243,14 @@ def job():
             except:
                 results_bybit = results_bybit + [None]
             else:
-                results_bybit = results_bybit + [dt_["result"]["items"][0]["price"]]
+                if ([dt_["result"]["items"][0]["recentExecuteRate"]][0] <= 60 ):
+                    if ([dt_["result"]["items"][1]["recentExecuteRate"]][0] <= 60 ):
+                        results_bybit = results_bybit + [dt_["result"]["items"][2]["price"]]
+                    else:
+                        results_bybit = results_bybit + [dt_["result"]["items"][1]["price"]]
+                else:
+                    results_bybit = results_bybit + [dt_["result"]["items"][0]["price"]]
+
 
 
         for asset in assets:
@@ -311,7 +327,9 @@ def job():
         #dt_pd['good_loss'] = np.round((((1.012 * dt_pd['spot']) - (dt_pd['binance'] * 1.0001)) / (dt_pd['binance'] * 1.0001) * 100),decimals=2)
 
         status_0 = dt_pd[['percent_binance','percent_huobi','percent_bybit','percent_pexpay']].max().max()
-        status = f"максимальный процент  = {np.round(status_0,decimals=2)}%"
+        status_1 = dt_pd[['percent_binance','percent_huobi','percent_bybit','percent_pexpay']].max().values
+        status = f"максимальный процент  - {np.round(status_0,decimals=2)}%"
+        status_ = f"Диапазон значений  - {np.round(status_1,decimals=2)}%"
 
         profit = np.round(deposit * status_0 / 100, decimals=2)
         
@@ -329,7 +347,7 @@ def job():
                 price_ = dt_pd[column_][row].values[0]
                 active = dt_pd['assetUnit'][row].values[0]
                 pay_method = dt_pd['trademethod'][row].values[0]
-                text = f'Лучшая продажа - {active} по цене {price_}.\nПлатежный метод - {pay_method}, биржа - {column_},  \n{status}.\nProfit {profit} / Deposit {deposit}'
+                text = f'Лучшая продажа - {active} по цене {price_}.\nПлатежный метод - {pay_method}, биржа - {column_},  \n{status}.\nProfit {profit} / Deposit {deposit}. \n{status_}'
                 
 
         if status_0 > 2.0:
