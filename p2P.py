@@ -51,6 +51,10 @@ def job():
     item3 = requests.get(url3)
     USDTRUB = item3.json()['price']
 
+    url4 = 'https://api.binance.com/api/v3/ticker/price?symbol=BNBRUB'
+    item4 = requests.get(url4)
+    BNBRUB = item4.json()['price']
+
     headers = {
         "Accept": "*/*",
         "Accept-Encoding": "gzip, deflate, br",
@@ -78,18 +82,34 @@ def job():
         'Content-Length': '114',
         }
 
+    headers_pexpay = {
+        'Content-Type': 'application/json',
+        'Accept': '*/*',
+        'Accept-Language': 'ru',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Host': 'www.pexpay.com',
+        'Origin': 'https://www.pexpay.com',
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.1 Safari/605.1.15',
+        'Connection': 'keep-alive',
+        'Content-Length': '161',
+        #'x-ui-request-trace:': 'f4e68e34-79da-45e3-8d3c-2dfe0dbffd55',
+        'clienttype': 'web',
+        'lang': 'en',
+        'csrftoken': 'd41d8cd98f00b204e9800998ecf8427e',
+        }
+
     paytypes = [
         #'Advcash',
         #'RUBfiatbalance',
         'TinkoffNew',
         #'YandexMoneyNew',
         'QIWI',
-        #'RosBankNew',
+        'RosBankNew',
     ]
 
     for paytype in paytypes:
 
-        coins = {1,2,3}
+        coins = {1,2,3,-1}
         method = int
 
         trades = {
@@ -101,6 +121,8 @@ def job():
             method = 28
         if paytype == 'QIWI':
             method = 9
+        if paytype == 'RosBankNew':
+            method = 69
         
         results_huobi = []
         
@@ -133,6 +155,7 @@ def job():
             'BTC',
             'USDT',
             'ETH',
+            'BNB',
         ]
 
         results = []
@@ -141,13 +164,52 @@ def job():
         fiatUnit = []
         assetUnit = []
         results_bybit = []
+        results_pexpay = []
         payment = []
+        payment_pexpay = []
+
+        if paytype == 'TinkoffNew':
+            payment_pexpay = ["Tinkoff"]
+        if paytype == 'QIWI':
+            payment_pexpay = ["QIWI"]
+        if paytype == 'RosBankNew':
+            payment_pexpay = ['SBP']
+
+        for asset in assets:
+
+            data_pexpay = {
+                "page":1,
+                "rows":10,
+                "payTypes":payment_pexpay, #"QIWI", "SBP"
+                "classifies":[],
+                "asset":asset,
+                "transAmount":str(deposit),
+                "fiat":"RUB",
+                "merchantCheck":False,
+                "filter":{"payTypes":[]},
+                "tradeType":"SELL"
+                }
+            
+            url_pexpay = 'https://www.pexpay.com/bapi/c2c/v1/friendly/c2c/ad/search'
+
+            r_pexpay = requests.post(url_pexpay, headers=headers_pexpay, json=data_pexpay)
+            dt_pexpay = r_pexpay.json()
+            #print((json.dumps(dt, indent=4)))
+
+            try:
+                [dt_pexpay["data"][0]["adDetailResp"]["price"]]
+            except:
+                results_pexpay = results_pexpay + None
+            else:
+                results_pexpay = results_pexpay + [dt_pexpay["data"][0]["adDetailResp"]["price"]]
 
 
         if paytype == 'TinkoffNew':
             payment = ["75"]
         if paytype == 'QIWI':
             payment = ["62"]
+        if paytype == 'RosBankNew':
+            payment = ["14"]
 
         for asset in assets:
 
@@ -218,6 +280,7 @@ def job():
                 BTCRUB,
                 USDTRUB,
                 ETHRUB, 
+                BNBRUB,
             ]
 
         dt_pd = pd.DataFrame({
@@ -227,23 +290,27 @@ def job():
             "binance": results,
             "huobi": results_huobi,
             "bybit": results_bybit,
+            "pexpay": results_pexpay,
             "spot": series,   
         })
 
         dt_pd['binance'] = dt_pd['binance'].astype(float)
         dt_pd['huobi'] = dt_pd['huobi'].astype(float)
         dt_pd['bybit'] = dt_pd['bybit'].astype(float)
+        dt_pd['pexpay'] = dt_pd['pexpay'].astype(float)
         dt_pd['spot'] = dt_pd['spot'].astype(float)
         dt_pd['percent_binance'] = (dt_pd['binance'] - dt_pd['spot']*1.012)/(dt_pd['spot']*1.012)*100
         dt_pd['percent_huobi'] = (dt_pd['huobi'] - dt_pd['spot']*1.012)/(dt_pd['spot']*1.012)*100
         dt_pd['percent_bybit'] = (dt_pd['bybit'] - dt_pd['spot']*1.012)/(dt_pd['spot']*1.012)*100
+        dt_pd['percent_pexpay'] = (dt_pd['pexpay'] - dt_pd['spot']*1.012)/(dt_pd['spot']*1.012)*100
         dt_pd['profit_binance'] = np.round(dt_pd['percent_binance'] * deposit / 100,decimals=2)
         dt_pd['profit_huobi'] = np.round(dt_pd['percent_huobi'] * deposit / 100,decimals=2)
         dt_pd['profit_bybit'] = np.round(dt_pd['percent_bybit'] * deposit / 100,decimals=2)
+        dt_pd['profit_pexpay'] = np.round(dt_pd['percent_pexpay'] * deposit / 100,decimals=2)
         #dt_pd['good_price'] = np.round((dt_pd['binance'] * 1.0001), decimals=3)
         #dt_pd['good_loss'] = np.round((((1.012 * dt_pd['spot']) - (dt_pd['binance'] * 1.0001)) / (dt_pd['binance'] * 1.0001) * 100),decimals=2)
-        
-        status_0 = dt_pd[['percent_binance','percent_huobi','percent_bybit']].max().max()
+
+        status_0 = dt_pd[['percent_binance','percent_huobi','percent_bybit','percent_pexpay']].max().max()
         status = f"максимальный процент  = {np.round(status_0,decimals=2)}%"
 
         profit = np.round(deposit * status_0 / 100, decimals=2)
@@ -252,15 +319,17 @@ def job():
             'percent_binance',
             'percent_huobi',
             'percent_bybit',
+            'percent_pexpay',
         }
 
         for column in columns:
-            row = dt_pd.index[dt_pd[column] == dt_pd[['percent_binance','percent_huobi','percent_bybit']].max().max()].tolist()
+            row = dt_pd.index[dt_pd[column] == dt_pd[['percent_binance','percent_huobi','percent_bybit','percent_pexpay']].max().max()].tolist()
             if row != []:
                 column_ = column.replace('percent_', '')
+                price_ = dt_pd[column_][row].values[0]
                 active = dt_pd['assetUnit'][row].values[0]
                 pay_method = dt_pd['trademethod'][row].values[0]
-                text = f'Лучшая продажа - {active}, платежный метод - {pay_method}, биржа - {column_},  {status}.\nProfit {profit} / Deposit {deposit}'
+                text = f'Лучшая продажа - {active} по цене {price_}.\nПлатежный метод - {pay_method}, биржа - {column_},  \n{status}.\nProfit {profit} / Deposit {deposit}'
                 
 
         if status_0 > 2.0:
