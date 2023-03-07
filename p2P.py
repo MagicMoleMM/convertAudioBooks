@@ -37,7 +37,7 @@ def extract_json_objects(text, decoder=JSONDecoder()):
 
 def job():
 
-    deposit = 20000
+    deposit = 50000
 
     url1 = 'https://api.binance.com/api/v3/ticker/price?symbol=BTCRUB'
     item1 = requests.get(url1)
@@ -243,8 +243,8 @@ def job():
             except:
                 results_bybit = results_bybit + [None]
             else:
-                if ([dt_["result"]["items"][0]["recentExecuteRate"]][0] <= 60 ):
-                    if ([dt_["result"]["items"][1]["recentExecuteRate"]][0] <= 60 ):
+                if ([dt_["result"]["items"][0]["recentExecuteRate"]][0] <= 60 or [dt_["result"]["items"][0]["recentOrderNum"]][0] <= 10):
+                    if ([dt_["result"]["items"][1]["recentExecuteRate"]][0] <= 60 or [dt_["result"]["items"][1]["recentOrderNum"]][0] <= 10):
                         results_bybit = results_bybit + [dt_["result"]["items"][2]["price"]]
                     else:
                         results_bybit = results_bybit + [dt_["result"]["items"][1]["price"]]
