@@ -157,8 +157,8 @@ def job():
                 except:
                     results_huobi = results_huobi + [None]
                 else:
-                    if ([result['data'][0]["tradeMonthTimes"]][0] <= 10 or [result['data'][0]["payTerm"]][0] > 15):
-                        if ([result['data'][1]["tradeMonthTimes"]][0] <= 10 or [result['data'][1]["payTerm"]][0] > 15):
+                    if ([result['data'][0]["tradeMonthTimes"]][0] == 0 or [result['data'][0]["isOnline"]][0] == False):
+                        if ([result['data'][1]["tradeMonthTimes"]][0] == 0 or [result['data'][1]["isOnline"]][0] == False):
                             try:
                                 [result['data'][2]["price"]]
                             except:
@@ -262,8 +262,8 @@ def job():
             except:
                 results_bybit = results_bybit + [None]
             else:
-                if ([dt_["result"]["items"][0]["recentExecuteRate"]][0] <= 60 or [dt_["result"]["items"][0]["recentOrderNum"]][0] <= 10):
-                    if ([dt_["result"]["items"][1]["recentExecuteRate"]][0] <= 60 or [dt_["result"]["items"][1]["recentOrderNum"]][0] <= 10):
+                if ([dt_["result"]["items"][0]["recentExecuteRate"]][0] <= 60 or [dt_["result"]["items"][0]["recentOrderNum"]][0] <= 10 or [dt_["result"]["items"][0]["isOnline"]][0] == False):
+                    if ([dt_["result"]["items"][1]["recentExecuteRate"]][0] <= 60 or [dt_["result"]["items"][1]["recentOrderNum"]][0] <= 10 or [dt_["result"]["items"][1]["isOnline"]][0] == False):
                         results_bybit = results_bybit + [dt_["result"]["items"][2]["price"]]
                     else:
                         results_bybit = results_bybit + [dt_["result"]["items"][1]["price"]]
@@ -381,4 +381,4 @@ schedule.every(15).minutes.do(job)
 
 while True:
     schedule.run_pending()
-    time.sleep(1)
+    time.sleep(60)
