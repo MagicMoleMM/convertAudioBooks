@@ -59,7 +59,7 @@ else:
         results_bybit = results_bybit + [None]
 
 print(results_bybit,i)
-"""
+
 
 def extract_json_objects(text, decoder=JSONDecoder()):
 
@@ -108,6 +108,7 @@ else:
     
 print(results_huobi,i)
 """
+
 headers_pexpay = {
     'Content-Type': 'application/json',
     'Accept': '*/*',
@@ -117,25 +118,28 @@ headers_pexpay = {
     'Origin': 'https://www.pexpay.com',
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.1 Safari/605.1.15',
     'Connection': 'keep-alive',
-    'Content-Length': '161',
+    'Content-Length': '163',
     #'x-ui-request-trace:': 'f4e68e34-79da-45e3-8d3c-2dfe0dbffd55',
     'clienttype': 'web',
     'lang': 'en',
     'csrftoken': 'd41d8cd98f00b204e9800998ecf8427e',
     }
 
+
 data_pexpay = {
         "page":1,
          "rows":10,
-         "payTypes":["sbpotkr"],
+         "payTypes":[],
          "classifies":[],
-         "asset":"BNB",
-         "transAmount":"20000",
-         "fiat":"RUB",
+         "asset":"USDT",
+         "transAmount":"500",
+         "fiat":"USD",
          "merchantCheck":False,
          "filter":{"payTypes":[]},
-         "tradeType":"SELL"
+         "tradeType":"BUY"
             }
+
+
 
 results_pexpay = []
         
@@ -143,7 +147,8 @@ url_pexpay = 'https://www.pexpay.com/bapi/c2c/v1/friendly/c2c/ad/search'
 
 r_pexpay = requests.post(url_pexpay, headers=headers_pexpay, json=data_pexpay)
 dt_pexpay = r_pexpay.json()
-#print((json.dumps(dt_pexpay, indent=4)))
+print((json.dumps(dt_pexpay, indent=4)))
+
 
 try:
     [dt_pexpay["data"][0]["adDetailResp"]["price"]]
@@ -168,7 +173,7 @@ print(results_pexpay,i)
 
 print(dt_pexpay["data"][0]["advertiserVo"]["makerOnlineStatus"]["status"])
 
-
+"""
 headers = {
     "Accept": "*/*",
     "Accept-Encoding": "gzip, deflate, br",

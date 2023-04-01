@@ -12,7 +12,7 @@ item_sunrise = []
 item_sunset = []
 
 for i in range(1, 13): 
-    url = f'https://www.drikpanchang.com/panchang/month-panchang.html?geoname-id=4477893&date=01/{i}/2023' # manteo 
+    url = f'https://www.drikpanchang.com/panchang/month-panchang.html?geoname-id=524901&date=01/{i}/2024' # Moscow - 524901 Vancouver - 6173331
     item = requests.get(url)
     soup = bs(item.content, 'html.parser')
     item_content = soup.find(class_="dpMonthGrid")
@@ -71,10 +71,11 @@ print(len(item_festival))
 print(len(item_day))
 
 festivals = pd.DataFrame({
-    "item_festival": item_festival,
-    "item_festival_title": item_festival_title,
-    #  "item_sunset": item_sunset,
+    #"item_festival": item_festival,
+    #"item_festival_title": item_festival_title,
+    "item_sunrise": item_sunrise,
+    "item_day": item_day
 
 })
 
-festivals.to_csv('./manteo_2023.csv')
+festivals.to_csv('./item_sunrise.csv')
